@@ -1,78 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Enter Ætheria</title>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Unbounded', sans-serif;
-      background: linear-gradient(to bottom, #0b0e0f, #11191f);
-      color: #e2e8f0;
-    }
-    .glow {
-      box-shadow: 0 0 30px rgba(94, 234, 212, 0.4);
-    }
-    .glass {
-      backdrop-filter: blur(14px);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .gradient-text {
-      background: linear-gradient(to right, #5eead4, #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÆTHERIA | Futuristic Wellness Retreats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #00f5ff;
+            --secondary: #7a00ff;
+            --dark: #0a0a1a;
+            --darker: #050510;
+            --light: #ffffff;
+            --accent: #ff00c8;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(122, 0, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 26, 0.8);
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 300;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(90deg, rgba(0, 245, 255, 0.1), rgba(122, 0, 255, 0.1));
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.5), 0 0 60px rgba(122, 0, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0, 245, 255, 0.8), 0 0 30px rgba(122, 0, 255, 0.6);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--light);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 245, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 245, 255, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Locations Section */
+        .locations {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .location-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 245, 255, 0.3);
+        }
+
+        .location-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover .location-image {
+            transform: scale(1.1);
+        }
+
+        .location-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10, 10, 26, 0.9));
+            padding: 2rem 1rem 1rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover .location-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .location-name {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 245, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(10, 10, 26, 0.7);
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .floating-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .floating-3 {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+    </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element floating-1"></div>
+    <div class="floating-element floating-2"></div>
+    <div class="floating-element floating-3"></div>
 
-<!-- Hero -->
-<section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
-  <h1 class="text-5xl md:text-6xl font-bold gradient-text mb-4 tracking-wide">Enter Ætheria</h1>
-  <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-12">
-    Real estate reborn as ritual. Land as operating system. Nodes of sovereignty in Earth’s hidden grid.
-  </p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">ÆTHERIA</div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Locations <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Kyrgyzstan</a>
+                    <a href="#" class="dropdown-item">Malaysia</a>
+                    <a href="#" class="dropdown-item">Georgia</a>
+                    <a href="#" class="dropdown-item">Namibia</a>
+                </div>
+            </div>
+            <a href="#" class="nav-link">Technology</a>
+            <a href="#" class="nav-link">Experience</a>
+            <a href="#" class="nav-link">About</a>
+        </div>
+        <button class="cta-button">Reserve Your Node</button>
+    </nav>
 
-  <!-- Action Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>REDEFINE YOUR EXISTENCE</h1>
+            <p>Experience the future of wellness at ÆTHERIA - where cutting-edge technology meets pristine nature. Our self-sufficient, off-grid retreats offer complete digital sovereignty while immersing you in the world's most breathtaking landscapes.</p>
+            <div class="hero-buttons">
+                <button class="cta-button">Explore Locations</button>
+                <button class="secondary-button">View Technology</button>
+            </div>
+        </div>
+    </section>
 
-    <!-- Node Catalog -->
-    <div class="glass p-6 rounded-xl glow hover:scale-105 transition">
-      <h2 class="text-xl font-semibold mb-2">🏞 Global Node Map</h2>
-      <p class="text-sm text-slate-300 mb-3">Discover physical Ætherian nodes across Asia, Africa, the Americas. Each is sacred. Each is owned.</p>
-      <a href="/map" class="text-teal-400 font-mono hover:underline text-sm">> view sacred sites</a>
-    </div>
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">THE ÆTHERIA EXPERIENCE</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Complete Off-Grid Living</h3>
+                <p class="feature-description">Solar, wind, and geothermal systems provide unlimited energy. Water is harvested and purified on-site. Every node is a self-contained ecosystem.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 class="feature-title">Local Compute Network</h3>
+                <p class="feature-description">Your data never leaves your node. Powerful local servers handle all processing, ensuring privacy and eliminating latency in our most remote locations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 class="feature-title">Smart Home Integration</h3>
+                <p class="feature-description">AI-powered environments adapt to your preferences. Climate, lighting, and amenities respond intuitively to create your perfect sanctuary.</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Eden Development -->
-    <div class="glass p-6 rounded-xl glow hover:scale-105 transition">
-      <h2 class="text-xl font-semibold mb-2">🏛 Temple Construction</h2>
-      <p class="text-sm text-slate-300 mb-3">We don’t build homes. We build havens. Off-grid, AI-synced, sovereign sanctuaries for kings in exile.</p>
-      <a href="/temples" class="text-teal-400 font-mono hover:underline text-sm">> explore Eden architecture</a>
-    </div>
+    <!-- Locations Section -->
+    <section class="locations">
+        <h2 class="section-title">GLOBAL LOCATIONS</h2>
+        <div class="locations-grid">
+            <div class="location-card">
+                <img src="https://images.unsplash.com/photo-1544617543-6786171f8c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Kyrgyzstan" class="location-image">
+                <div class="location-overlay">
+                    <h3 class="location-name">Kyrgyzstan</h3>
+                    <p>Alpine Lakes & Mountains</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://images.unsplash.com/photo-1590523278191-995cbcda646b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Malaysia" class="location-image">
+                <div class="location-overlay">
+                    <h3 class="location-name">Malaysia</h3>
+                    <p>Rainforest & Islands</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://images.unsplash.com/photo-1598940603846-a1edd0ef2b59?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Georgia" class="location-image">
+                <div class="location-overlay">
+                    <h3 class="location-name">Georgia</h3>
+                    <p>Caucasus Mountains</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Namibia" class="location-image">
+                <div class="location-overlay">
+                    <h3 class="location-name">Namibia</h3>
+                    <p>Desert Landscapes</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Retreat / Residency -->
-    <div class="glass p-6 rounded-xl glow hover:scale-105 transition">
-      <h2 class="text-xl font-semibold mb-2">🧘‍♂️ Residency & Ritual</h2>
-      <p class="text-sm text-slate-300 mb-3">Live inside the myth. Train, build, and activate at an Ætheria node. Your initiation begins in the soil.</p>
-      <a href="/residency" class="text-teal-400 font-mono hover:underline text-sm">> apply for immersion</a>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo" style="font-size: 1.5rem; margin-bottom: 1rem;">ÆTHERIA</div>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">The Future of Wellness Living</p>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">© 2024 ÆTHERIA. All rights reserved. Designed for the future.</p>
+    </footer>
 
-  </div>
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  <!-- Section Break -->
-  <div class="mt-16 text-sm text-gray-400 max-w-xl">
-    <p><span class="font-mono text-teal-300">~/terrain/init:</span> Land is not an asset. It is memory.</p>
-    <p><span class="font-mono text-teal-300">~/nodes/manifest:</span> Sovereign soil. No middlemen. All signal.</p>
-  </div>
+        // Add scroll animation effects
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
 
-  <!-- Footer -->
-  <footer class="mt-20 text-gray-500 text-xs text-center">
-    &copy; 2025 Ætheria • Sovereign Environments by <a href="https://kxros.io" class="underline hover:text-teal-400">KXROS</a>
-  </footer>
-</section>
-
+        // Add interactive hover effects for cards
+        const cards = document.querySelectorAll('.feature-card, .location-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = this.classList.contains('location-card') ? 'scale(1.05)' : 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = this.classList.contains('location-card') ? 'scale(1)' : 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
