@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enter Ætheria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Unbounded', sans-serif;
+      background: linear-gradient(to bottom, #0b0e0f, #11191f);
+      color: #e2e8f0;
+    }
+    .glow {
+      box-shadow: 0 0 30px rgba(94, 234, 212, 0.4);
+    }
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #5eead4, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- Hero -->
+<section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+  <h1 class="text-5xl md:text-6xl font-bold gradient-text mb-4 tracking-wide">Enter Ætheria</h1>
+  <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-12">
+    Real estate reborn as ritual. Land as operating system. Nodes of sovereignty in Earth’s hidden grid.
+  </p>
+
+  <!-- Action Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">
+
+    <!-- Node Catalog -->
+    <div class="glass p-6 rounded-xl glow hover:scale-105 transition">
+      <h2 class="text-xl font-semibold mb-2">🏞 Global Node Map</h2>
+      <p class="text-sm text-slate-300 mb-3">Discover physical Ætherian nodes across Asia, Africa, the Americas. Each is sacred. Each is owned.</p>
+      <a href="/map" class="text-teal-400 font-mono hover:underline text-sm">> view sacred sites</a>
+    </div>
+
+    <!-- Eden Development -->
+    <div class="glass p-6 rounded-xl glow hover:scale-105 transition">
+      <h2 class="text-xl font-semibold mb-2">🏛 Temple Construction</h2>
+      <p class="text-sm text-slate-300 mb-3">We don’t build homes. We build havens. Off-grid, AI-synced, sovereign sanctuaries for kings in exile.</p>
+      <a href="/temples" class="text-teal-400 font-mono hover:underline text-sm">> explore Eden architecture</a>
+    </div>
+
+    <!-- Retreat / Residency -->
+    <div class="glass p-6 rounded-xl glow hover:scale-105 transition">
+      <h2 class="text-xl font-semibold mb-2">🧘‍♂️ Residency & Ritual</h2>
+      <p class="text-sm text-slate-300 mb-3">Live inside the myth. Train, build, and activate at an Ætheria node. Your initiation begins in the soil.</p>
+      <a href="/residency" class="text-teal-400 font-mono hover:underline text-sm">> apply for immersion</a>
+    </div>
+
+  </div>
+
+  <!-- Section Break -->
+  <div class="mt-16 text-sm text-gray-400 max-w-xl">
+    <p><span class="font-mono text-teal-300">~/terrain/init:</span> Land is not an asset. It is memory.</p>
+    <p><span class="font-mono text-teal-300">~/nodes/manifest:</span> Sovereign soil. No middlemen. All signal.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-20 text-gray-500 text-xs text-center">
+    &copy; 2025 Ætheria • Sovereign Environments by <a href="https://kxros.io" class="underline hover:text-teal-400">KXROS</a>
+  </footer>
+</section>
+
+</body>
+</html>
