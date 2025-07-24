@@ -247,8 +247,8 @@
             box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
         }
 
-        /* Features Section */
-        .features {
+        /* Locations Section */
+        .locations {
             padding: 8rem 5%;
             text-align: center;
         }
@@ -263,14 +263,14 @@
             background-clip: text;
         }
 
-        .features-grid {
+        .locations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .feature-card {
+        .location-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 245, 255, 0.1);
             border-radius: 16px;
@@ -281,13 +281,13 @@
             overflow: hidden;
         }
 
-        .feature-card:hover {
+        .location-card:hover {
             transform: translateY(-10px);
             border-color: rgba(0, 245, 255, 0.3);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 245, 255, 0.1);
         }
 
-        .feature-card::before {
+        .location-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -299,59 +299,13 @@
             transition: transform 0.3s ease;
         }
 
-        .feature-card:hover::before {
+        .location-card:hover::before {
             transform: scaleX(1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        .feature-description {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-        }
-
-        /* Locations Section */
-        .locations {
-            padding: 8rem 5%;
-            text-align: center;
-        }
-
-        .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .location-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            height: 300px;
-            transition: all 0.3s ease;
-        }
-
-        .location-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(0, 245, 255, 0.3);
         }
 
         .location-image {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
             transition: all 0.3s ease;
         }
@@ -360,32 +314,15 @@
             transform: scale(1.1);
         }
 
-        .location-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(10, 10, 26, 0.9));
-            padding: 2rem 1rem 1rem;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .location-card:hover .location-overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
         .location-name {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
         .footer {
-            padding: 4rem 5%;
+            padding: 8rem 5%;
             text-align: center;
             border-top: 1px solid rgba(0, 245, 255, 0.1);
             margin-top: 4rem;
@@ -517,38 +454,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>REDEFINE YOUR EXISTENCE</h1>
-            <p>Experience the future of wellness at ÆTHERIA - where cutting-edge technology meets pristine nature. Our self-sufficient, off-grid retreats offer complete digital sovereignty while immersing you in the world's most breathtaking landscapes.</p>
+            <p>Experience the future of wellness at ÆTHERIA – where cutting-edge technology meets pristine nature. Our self-sufficient, off-grid retreats offer complete digital sovereignty while immersing you in the world's most breathtaking landscapes.</p>
             <div class="hero-buttons">
                 <button class="cta-button">Explore Locations</button>
                 <button class="secondary-button">View Technology</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <h2 class="section-title">THE ÆTHERIA EXPERIENCE</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3 class="feature-title">Complete Off-Grid Living</h3>
-                <p class="feature-description">Solar, wind, and geothermal systems provide unlimited energy. Water is harvested and purified on-site. Every node is a self-contained ecosystem.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3 class="feature-title">Local Compute Network</h3>
-                <p class="feature-description">Your data never leaves your node. Powerful local servers handle all processing, ensuring privacy and eliminating latency in our most remote locations.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <h3 class="feature-title">Smart Home Integration</h3>
-                <p class="feature-description">AI-powered environments adapt to your preferences. Climate, lighting, and amenities respond intuitively to create your perfect sanctuary.</p>
             </div>
         </div>
     </section>
@@ -558,32 +467,20 @@
         <h2 class="section-title">GLOBAL LOCATIONS</h2>
         <div class="locations-grid">
             <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1544617543-6786171f8c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Kyrgyzstan" class="location-image">
-                <div class="location-overlay">
-                    <h3 class="location-name">Kyrgyzstan</h3>
-                    <p>Alpine Lakes & Mountains</p>
-                </div>
+                <img src="https://source.unsplash.com/random/300x200/?kyrgyzstan" alt="Kyrgyzstan" class="location-image">
+                <h3 class="location-name">Kyrgyzstan</h3>
             </div>
             <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1590523278191-995cbcda646b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Malaysia" class="location-image">
-                <div class="location-overlay">
-                    <h3 class="location-name">Malaysia</h3>
-                    <p>Rainforest & Islands</p>
-                </div>
+                <img src="https://source.unsplash.com/random/300x200/?malaysia" alt="Malaysia" class="location-image">
+                <h3 class="location-name">Malaysia</h3>
             </div>
             <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1598940603846-a1edd0ef2b59?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Georgia" class="location-image">
-                <div class="location-overlay">
-                    <h3 class="location-name">Georgia</h3>
-                    <p>Caucasus Mountains</p>
-                </div>
+                <img src="https://source.unsplash.com/random/300x200/?georgia" alt="Georgia" class="location-image">
+                <h3 class="location-name">Georgia</h3>
             </div>
             <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Namibia" class="location-image">
-                <div class="location-overlay">
-                    <h3 class="location-name">Namibia</h3>
-                    <p>Desert Landscapes</p>
-                </div>
+                <img src="https://source.unsplash.com/random/300x200/?namibia" alt="Namibia" class="location-image">
+                <h3 class="location-name">Namibia</h3>
             </div>
         </div>
     </section>
@@ -626,14 +523,14 @@
         });
 
         // Add interactive hover effects for cards
-        const cards = document.querySelectorAll('.feature-card, .location-card');
+        const cards = document.querySelectorAll('.location-card');
         cards.forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = this.classList.contains('location-card') ? 'scale(1.05)' : 'translateY(-10px)';
+                this.style.transform = 'scale(1.05)';
             });
             
             card.addEventListener('mouseleave', function() {
-                this.style.transform = this.classList.contains('location-card') ? 'scale(1)' : 'translateY(0)';
+                this.style.transform = 'scale(1)';
             });
         });
     </script>
